@@ -58,3 +58,9 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+
+/* 點擊todo內容的變化:完成 */
+.completed{
+    opacity: .6;
+    text-decoration: line-through 3px red;
+}
