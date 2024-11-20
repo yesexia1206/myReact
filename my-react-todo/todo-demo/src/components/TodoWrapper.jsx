@@ -12,9 +12,10 @@ function TodoWrapper() {
     //     { content: 'list2', id: 2 },
     // ]);
     //^因為要判定todo是否被點擊，所以要增加一個標記屬性=>isCompleted
+    //新增陣列屬性 isEdit =>判別是否編輯中
     const [todos, setTodos] = useState([
-        { content: 'list1', id: 1, isCompleted: false },
-        { content: 'list2', id: 2, isCompleted: false },
+        { content: 'list1', id: Math.random(), isCompleted: false, isEdit: false },
+        { content: 'list2', id: Math.random(), isCompleted: false, isEdit: false },
     ]);
 
     // console.log(todos);
@@ -23,8 +24,9 @@ function TodoWrapper() {
     //2.再加入新的物件內容
     const addTodo = (content) => {
         setTodos([...todos, {
-            content: content, id: (todos.length + 1),
-            isCompleted: false
+            content: content, id: Math.random(),
+            isCompleted: false,
+            isEdit: false
         }])
     }
 
@@ -50,6 +52,36 @@ function TodoWrapper() {
         }))
     }
 
+    //建立是否修改的函式(雙向)
+    const toggleIsEdit = (id) => {
+        setTodos(todos.map((todo) => {
+            //逐筆檢查目前的todo.id是否等於被修改的id
+            //Yes=>1.取出todo資料 2.將isEdit屬性值反向處理(true->flase / flase->true)
+            //No =>todo不變
+            return todo.id === id
+                ? { ...todo, isEdit: !todo.isEdit }
+                : todo
+            //if-else寫法
+            // if (todo.id === id) {
+            //     return { ...todo, isEdit: !todo.isEdit }
+            // }
+            // else {
+            //     return todo
+            // }
+        }))
+    }
+
+    //建立完成修改的程式(按下完成的動作)
+    //1.異動content為新內容
+    //2.isEdit改回false
+    const editTodo=(id,newContent)=>{
+        setTodos(todos.map((todo)=>{
+            return todo.id===id
+            ?{...todo,content:newContent,isEdit:false}
+            :todo
+        }))
+    }
+
     return (
         <div className="wrapper">
             <h1>待辦事項</h1>
@@ -59,6 +91,8 @@ function TodoWrapper() {
                     return <Todo todo={todo} key={todo.id}
                         deleteTodo={deleteTodo}
                         toggleCompleted={toggleCompleted}
+                        toggleIsEdit={toggleIsEdit}
+                        editTodo={editTodo}
                     />
                 })
             }
