@@ -24,10 +24,20 @@ function App() {
         })
         //
         const h1 = document.getElementById('h1');
+        let isClick = false;
         h1.addEventListener('click', (e) => {
-            console.log(e.target.textContent);
-            e.target.textContent = "click事件被觸發了";
-            e.target.style.color = "blue";
+            if (isClick === false) {
+                console.log(e.target.textContent);
+                e.target.textContent = "click事件被觸發了";
+                e.target.style.color = "blue";
+                isClick = true;
+            }
+            else {
+                e.target.textContent = "滑鼠事件";
+                e.target.style.color = "";
+                isClick = false;
+            }
+
             // const h1Text=h1.textContent;
             // alert(h1Text);
         })
