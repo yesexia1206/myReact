@@ -1,56 +1,155 @@
 import { useEffect } from "react"
 import axios from 'axios';
 import './style-weather-1202.css';
-//import { IoIosUmbrella } from "react-icons/io";
+import { IoIosUmbrella } from "react-icons/io";
 
 function App() {
 
   useEffect(() => {
     (async () => {
       // const data = await axios.get('./F-C0032-001.json');
-      const data = await axios.get('');
+      const data = await axios.get('https://github.com/yesexia1206/myReact/blob/main/my-react-app1/src/F-C0032-001.json');
       const { location } = data.data.cwaopendata.dataset;
+      console.log(location);
     })
   }, [])
 
   return (
     <>
-      <h2>36小時天氣預報</h2>
-      <h3>三十六小時天氣預報</h3>
-      <div id="weatherList">
-        <div id="city">
-          <p>台北市</p>
-          <div id="date">
-            <div>
-              <p>2日</p>
-              <p>上午6:00</p>
-              <p>~</p>
-              <p>下午6:00</p>
-              <img src="" alt="" />
-              <p>晴時多雲</p>
-              {/* <IoIosUmbrella /> */}<p>10%</p>
+      <div className="wrap">
+        <h2>36小時天氣預報</h2>
+        <h3>三十六小時天氣預報</h3>
+
+        {/* 一列兩欄 */}
+        <div className="row">
+          {/* 第一欄 */}
+          <div className="col">
+            {/* 卡片樣式 */}
+            <div className="card">
+              {/* 標題 */}
+              <div className="card-title">台北市</div>
+              {/* 內容 */}
+              <div className="card-body">
+                {/* 一列三欄 */}
+                <div className="row2">
+                  {/* 第一欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00
+                      <br />
+                      ~
+                      <br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="../images/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><IoIosUmbrella />10%</p>
+                  </div>
+                  {/* 第二欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00
+                      <br />
+                      ~
+                      <br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="../images/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><IoIosUmbrella />10%</p>
+                  </div>
+                  {/* 第三欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00
+                      <br />
+                      ~
+                      <br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="../images/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><IoIosUmbrella />10%</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <p>2日</p>
-              <p>上午6:00</p>
-              <p>~</p>
-              <p>下午6:00</p>
-              <img src="" alt="" />
-              <p>晴時多雲</p>
-              {/* <IoIosUmbrella /> */}<p>10%</p>
-            </div>
-            <div>
-              <p>2日</p>
-              <p>上午6:00</p>
-              <p>~</p>
-              <p>下午6:00</p>
-              <img src="" alt="" />
-              <p>晴時多雲</p>
-              {/* <IoIosUmbrella /> */}<p>10%</p>
+          </div>
+
+          {/* 第二欄 */}
+          <div className="col">
+            {/* 卡片樣式 */}
+            <div className="card">
+              {/* 標題 */}
+              <div className="card-title">台北市</div>
+              {/* 內容 */}
+              <div className="card-body">
+                {/* 一列三欄 */}
+                <div className="row2">
+                  {/* 第一欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00
+                      <br />
+                      ~
+                      <br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="../images/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><IoIosUmbrella />10%</p>
+                  </div>
+                  {/* 第二欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00
+                      <br />
+                      ~
+                      <br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="../images/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><IoIosUmbrella />10%</p>
+                  </div>
+                  {/* 第三欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00
+                      <br />
+                      ~
+                      <br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="../images/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><IoIosUmbrella />10%</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </>
   )
 }
