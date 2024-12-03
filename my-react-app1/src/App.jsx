@@ -8,10 +8,10 @@ function App() {
   useEffect(() => {
     (async () => {
       // const data = await axios.get('./F-C0032-001.json');
-      const data = await axios.get('https://github.com/yesexia1206/myReact/blob/main/my-react-app1/src/F-C0032-001.json');
+      const data = await axios.get('https://yesexia1206.github.io/myReact/json/F-C0032-001.json');
       const { location } = data.data.cwaopendata.dataset;
       console.log(location);
-    })
+    })()
   }, [])
 
   return (
@@ -43,7 +43,7 @@ function App() {
                       下午6:00
                     </p>
                     <p>
-                      <img src="../images/weatherIcon/晴時多雲.svg" alt="" />
+                      <img src="images/weatherIcon/晴時多雲.svg" alt="" />
                     </p>
                     <p>晴時多雲</p>
                     <p><IoIosUmbrella />10%</p>
@@ -59,7 +59,7 @@ function App() {
                       下午6:00
                     </p>
                     <p>
-                      <img src="../images/weatherIcon/晴時多雲.svg" alt="" />
+                      <img src="images/weatherIcon/晴時多雲.svg" alt="" />
                     </p>
                     <p>晴時多雲</p>
                     <p><IoIosUmbrella />10%</p>
@@ -75,7 +75,7 @@ function App() {
                       下午6:00
                     </p>
                     <p>
-                      <img src="../images/weatherIcon/晴時多雲.svg" alt="" />
+                      <img src="images/weatherIcon/晴時多雲.svg" alt="" />
                     </p>
                     <p>晴時多雲</p>
                     <p><IoIosUmbrella />10%</p>
