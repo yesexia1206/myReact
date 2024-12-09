@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jQuery 主程式-->
+    <script src="./jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <h1>非前端框架下的jQuery使用</h1>
+    <hr>
+
+    <div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Click1</p>
+        <p>Click2</p>
+    </div>
+
+    <script>
+        /*標準寫法*/
+        $(document).ready(function () {
+            //程式撰寫區
+            $('p').click(function () {
+                // hide() =>不顯示
+                $(this).hide();
+            });
+        });
+
+        //減寫法
+        // $(function () {
+        //     //程式撰寫區
+        //     $('h2').click(function () {
+        //         $(this).hide();
+        //     });
+        // });
+
+        // $(()=>{
+        //     $('h2').click(()=>{
+        //         $(this).hide();
+        //     });
+        // });
+    </script>
+
+    <hr>
+    <p id="p1">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <button id="hide">隱藏</button>
+    <button id="show">顯示</button>
+    <button id="toggle">雙向</button>
+    <script>
+        $(() => {
+            $('#hide').click(() => {
+                $('#p1').hide(300);
+            });
+            $('#show').click(() => {
+                $('#p1').show(300);
+            });
+
+            $('#toggle').click(() => {
+                $('#p1').toggle(300);
+            });
+        });
+    </script>
+
+    <hr>
+    <button id="btn1">展開</button>
+    <button id="btn2">摺疊</button>
+    <button id="btn3">雙向</button>
+    <div id="panel" style="display: none; background-color: #eee; height: 100px; padding: 10px;">
+        展開的面板
+    </div>
+    <script>
+        $(() => {
+            $('#btn1').click(() => {
+                $('#panel').slideDown(500);
+            });
+            $('#btn2').click(() => {
+                $('#panel').slideUp(500);
+            });
+            $('#btn3').click(() => {
+                $('#panel').slideToggle(500);
+            });
+        });
+    </script>
+
+    <hr>
+    <!-- 最新消息列展開與摺疊 -->
+    <div id="boxNew">
+        <h2 id="News1">News1</h2>
+        <p id="new1p">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+        <h2 id="News2">News2</h2>
+        <p id="new2p">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+        <h2 id="News3">News3</h2>
+        <p id="new3p">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+
+    <style>
+        #boxNew h2 {
+            cursor: pointer;
+            background-color: #111;
+            color: #eee;
+            width: 100px;
+            text-align: center;
+        }
+
+        #boxNew p {
+            display: none;
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #111;
+            background-color: #eee;
+        }
+    </style>
+
+    <script>
+        $(() => {
+            $('#News1').click(() => {
+                $('#new1p').slideToggle(500);
+            });
+            $('#News2').click(() => {
+                $('#new2p').slideToggle(500);
+            });
+            $('#News3').click(() => {
+                $('#new3p').slideToggle(500);
+            });
+        });
+    </script>
+
+    <!-- animate -->
+    <hr>
+    <style>
+        #box2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            margin: 150px; 
+        }
+    </style>
+    <button id="right">右</button>
+    <button id="zoom">放大</button>
+    <button id="zoom2">縮小</button>
+    <button id="zoom3">雙向</button>
+    <button id="changeColor1">變色</button>
+
+    <div id="box2">123</div>
+
+    <script>
+        $(function () {
+            $('#right').click(function () {
+                $('#box2').animate({ right: '-100px' })
+            });
+            $('#zoom').click(function () {
+                $('#box2').animate({                    
+                    width: '150px',
+                    height: '150px',
+                    fontSize:'30px'                    
+                })
+            });
+            $('#zoom2').click(function () {
+                $('#box2').animate({                    
+                    width: '100px',
+                    height: '100px',
+                    fontSize:'16px'                    
+                })
+            });
+
+            $('#zoom3').click(function () {
+                $('#box2').animate({                    
+                    width: 'toggle',
+                    // height: 'toggle',
+                    // fontSize:'toggle'                    
+                },1000)
+            });
+
+            $('#changeColor1').click(function(){
+                $('#box2').css({
+                    "background-color":"yellow",
+                    "color":"red",
+                    "transition": "all 1s",
+                    "transform": "scale(1.2)",                    
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>
