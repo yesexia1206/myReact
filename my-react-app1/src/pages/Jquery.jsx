@@ -1,13 +1,39 @@
-import $ from 'jquery'
+import $ from 'jquery';
+import '../assets/jquery.css';
+import { useEffect } from 'react';
 
 export default function Jquery() {
+
+    //寫法1:過時的寫法
+    // useEffect(() => {
+
+    //     $(function () {
+    //         $('.cssAnim1').hover(function () {
+    //             $(this).addClass('imgScale');
+    //         }, function () {
+    //             $(this).removeClass('imgScale');
+    //         })
+    //     });
+
+    // }, [])
+
+    //寫法2:建議的寫法
+    useEffect(() => {
+
+        $('.cssAnim1').on('mouseover', function () {
+            $(this).addClass('imgScale');
+        })
+        $('.cssAnim1').on('mouseout', function () {
+            $(this).removeClass('imgScale');
+        })
+
+    }, [])
+
     return (
         <div>
-            <h2>Jquery</h2>
-            <button onClick={() => {
-                console.log($('h2').text());
-            }
-            }>click</button>
+            <a href="#" className="cssAnim1">
+                <img src="./src/html/images/03.jpg" alt="" />
+            </a>
         </div>
     )
 }
