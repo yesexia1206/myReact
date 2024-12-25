@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>取出storage變數</h2>
+    <hr>
+    <p id="showData"></p>
+    <button id="btn1" onclick="clearStorage()">清除指定storage變數</button>
+    <button id="btn2" onclick="clearAllStorage()">清除全部storage變數</button>
+    <script>
+        // let var1 = window.localStorage.getItem("var1");
+        // document.getElementById("showData").textContent = var1;
+
+        //取得多個變數
+        let varAll = '';
+        for (let i = 0; i < window.localStorage.length; i++) {
+
+            //取得每個變數後
+            let curKey=window.localStorage.key(i);
+            console.log(curKey);
+            //保存在varAll
+            varAll=varAll+window.localStorage.getItem(curKey)+'<br>';  
+            // \n =>跳脫字元 =>搭配innerText
+            // <br> =>HTML元素 =>搭配innerHTML
+            // 純文字內容 =>搭配textContent
+        }
+        //顯示varAll
+        document.getElementById("showData").innerHTML = varAll;
+
+        //清除全部
+        function clearAllStorage() {
+            window.localStorage.clear();
+            document.getElementById("showData").textContent = "storage變數已全部清除";
+        }
+        //指定清除
+        function clearStorage() {
+            window.localStorage.removeItem("var1");
+            document.getElementById("showData").textContent = "storage變數var1已清除";
+        }
+    </script>
+</body>
+
+</html>
